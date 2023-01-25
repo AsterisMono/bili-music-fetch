@@ -5,22 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="static/css/styles.css" />
-    <script defer src="js/ffmpeg.min.js"></script>
+    <script defer src="static/js/ffmpeg.min.js"></script>
     <script type="module" src="js/index.ts"></script>
     <title>BiliBili音频下载</title>
   </head>
-  <body>
-    <main class="page relative">
+  <body class="h-full">
+    <main class="page relative h-full">
       <div class="progress-bar absolute top-0 left-0"></div>
-      <div class="container mx-auto w-9/12 h-screen py-60">
-        <div class="font-light tracking-wide overflow-hidden h-20">
-          <div class="status_wheel transition-all duration-500 flex flex-col">
-            <p>装载运行时</p>
+      <div class="container mx-auto w-full sm:w-9/12 h-full py-48 sm:py-60">
+        <div
+          class="status-wheel-frame font-light tracking-wide overflow-hidden"
+        >
+          <div class="status-wheel transition-all duration-500 flex flex-col">
+            <p class="status-item">装载运行时</p>
           </div>
         </div>
       </div>
-      <input type="text" class="bvid_input" />
-      <button class="submit" disabled>Submit</button>
+      <!-- <input type="text" class="bvid_input" />
+      <button class="submit" disabled>Submit</button> -->
       <!-- Hidden -->
       <div class="hidden">
         <span class="progress">Progress</span>

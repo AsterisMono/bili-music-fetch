@@ -12,12 +12,12 @@ const ffmpeg = createFFmpeg({
   log: true,
 }) as FFmpeg;
 
-submitButton.addEventListener("click", () => {
-  transcodeBiliVideo(ffmpeg, bvidInput.value, nextStatus, setProgress);
-});
+// submitButton.addEventListener("click", () => {
+//   transcodeBiliVideo(ffmpeg, bvidInput.value, nextStatus, setProgress);
+// });
 
 (async () => {
   await ffmpeg.load();
   nextStatus("等待指令");
-  submitButton.disabled = false;
+  // submitButton.disabled = false;
 })();
