@@ -5,8 +5,8 @@
   "scripts": {
     "dev": "parcel index.html"
   },
-  "dependencies": {
-    "express": "^4.18.2",
+  "dependencies": {},
+  "devDependencies": {
     "parcel": "^2.8.3"
   }
 }
