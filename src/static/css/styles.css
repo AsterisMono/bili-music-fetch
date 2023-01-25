@@ -14,11 +14,11 @@ body {
   background-color: #3392ff;
   height: 5px;
   width: 0%;
+  @apply transition-all;
 }
 
 .page {
   width: 100vw;
-  height: 100vh;
   background: linear-gradient(135deg, #fed6e3 0%, #a8edea 100%) center / cover;
   background-size: 400% 400%;
   animation: animated-gradient 8s ease infinite;
