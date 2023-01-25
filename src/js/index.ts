@@ -17,7 +17,12 @@ submitButton.addEventListener("click", () => {
 });
 
 (async () => {
-  await ffmpeg.load();
+  try {
+    await ffmpeg.load();
+  } catch (e) {
+    nextStatus("加载失败");
+    return;
+  }
   nextStatus("等待指令");
   submitButton.disabled = false;
 })();
