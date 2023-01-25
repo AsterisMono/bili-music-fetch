@@ -1,0 +1,12 @@
+{
+  "name": "bili-music-fetch",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "dev": "parcel index.html"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "parcel": "^2.8.3"
+  }
+}
