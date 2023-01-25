@@ -6,13 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="static/css/styles.css" />
     <script defer src="static/js/ffmpeg.min.js"></script>
-    <script defer src="static/js/index.js"></script>
+    <script type="module" src="static/js/index.ts"></script>
     <title>Document</title>
   </head>
   <body>
-    <input type="text" class="bvid_input"/>
-    <button class="submit" disabled>Submit</button>
-    <br>
-    <span class="progress">Progress</span>
+    <main class="page">
+      <div class="progress-bar"></div>
+      <div class="container mx-auto w-9/12 h-screen py-60">
+        <div class="font-light tracking-wide overflow-hidden h-20">
+          <div class="status_wheel transition-all duration-500 flex flex-col">
+            <p>等待指令</p>
+          </div>
+        </div>
+      </div>
+      <input type="text" class="bvid_input" />
+      <button class="submit" disabled>Submit</button>
+      <!-- Hidden -->
+      <div class="hidden">
+        <span class="progress">Progress</span>
+      </div>
+    </main>
   </body>
 </html>

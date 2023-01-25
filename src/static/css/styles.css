@@ -1,3 +1,43 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --status-text-size: 4.5rem;
+}
+
+body {
+  color: rgb(37, 37, 37);
+}
+
+.progress-bar {
+  background-color: #3392ff;
+  height: 5px;
+  width: 0%;
+}
+
+.page {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #fed6e3 0%, #a8edea 100%) center / cover;
+  background-size: 400% 400%;
+  animation: animated-gradient 8s ease infinite;
+}
+
+@keyframes animated-gradient {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 50% 100%;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+
+.status_wheel {
+  font-size: var(--status-text-size);
+  line-height: 1;
+  gap: var(--status-text-size);
+}
