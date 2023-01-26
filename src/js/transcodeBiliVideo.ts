@@ -24,15 +24,15 @@ export const transcodeBiliVideo = async function (
     throw packageError("视频信息获取失败", "请检查BV号是否正确", e);
   }
 
-  nextMessage(`${videoTitle} - ${videoUploader}`, "normal");
-
   // stage: raw(mp4), converted(mp3), bundled(mp3)
   const getFileName = (stage: string, ext: string) =>
     `${bvid}_${cid}_${stage}.${ext}`;
 
   // 2. download video
   progressCb(0.2);
+  nextMessage(`${videoTitle} - ${videoUploader}`, "normal");
   await statusCb("正在下载视频");
+
   try {
     ffmpeg.FS(
       "writeFile",
