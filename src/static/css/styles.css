@@ -8,7 +8,7 @@ html {
 }
 
 :root {
-  --status-text-size: 3.2rem;
+  --status-text-size: 2.8rem;
 }
 
 @media screen(sm) {
