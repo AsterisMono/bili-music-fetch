@@ -6,7 +6,7 @@ interface customError {
   sendForAnalytics: boolean;
 }
 export function isCustomError(error: any): error is customError {
-  return error && (error as customError).originalError !== undefined;
+  return error && (error as customError).detailMsg !== undefined;
 }
 
 export function packageError(
