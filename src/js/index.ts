@@ -2,9 +2,9 @@
 const { createFFmpeg } = FFmpeg;
 import type { FFmpeg } from "@ffmpeg/ffmpeg";
 import { nextStatus } from "./statusWheel";
-import { setProgress, setProgressColor } from "./progressBar";
+import { setProgress } from "./progressBar";
 import { transcodeBiliVideo } from "./transcodeBiliVideo";
-import { UNKNOWN_ERROR_DETAILMSG, isCustomError, packageError } from "./error";
+import { UNKNOWN_ERROR_DETAILMSG, packageError } from "./error";
 const bvidInput = document.querySelector(".bvid_input") as HTMLInputElement;
 const submitButton = document.querySelector(".submit") as HTMLButtonElement;
 
