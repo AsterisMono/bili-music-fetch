@@ -1,4 +1,5 @@
 export const UNKNOWN_ERROR_DETAILMSG = "出现了意料之外的错误";
+const USE_SAD_FACE_STATUS = true;
 interface customError {
   status: string;
   detailMsg: string;
@@ -18,7 +19,7 @@ export function packageError(
   if (isCustomError(originalError)) return originalError;
   else
     return {
-      status,
+      status: USE_SAD_FACE_STATUS ? "( ´ﾟДﾟ`)" : status,
       detailMsg,
       originalError,
       sendForAnalytics,

@@ -12,11 +12,19 @@ const ffmpeg = createFFmpeg({
   log: true,
 }) as FFmpeg;
 
-const main = async function () {
+(async () => {
+  const loadFFmpeg = async () => {
+    try {
+      await ffmpeg.load();
+    } catch (e) {
+      throw packageError("加载失败", "FFmpeg 运行时加载失败", e, true);
+    }
+  };
   try {
+    await loadFFmpeg();
     const pathname = new URL(location.href).pathname;
     const re = new RegExp("\\/video\\/BV\\w{10}/");
-    if (!re.test(pathname)) throw packageError("( ´ﾟДﾟ`)", "调用格式不正确");
+    if (!re.test(pathname)) throw packageError("参数错误", "调用格式不正确");
     const bvid = pathname.split("/")[2];
     nextMessage(bvid);
     await transcodeBiliVideo(ffmpeg, bvid, nextStatus, setProgress);
@@ -27,14 +35,4 @@ const main = async function () {
     console.error(error);
     setProgress(0);
   }
-};
-
-(async () => {
-  try {
-    await ffmpeg.load();
-  } catch (e) {
-    nextStatus("加载失败");
-    return;
-  }
-  main();
 })();
