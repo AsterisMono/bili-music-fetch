@@ -12,18 +12,31 @@
   <body class="h-full">
     <main class="page relative h-full">
       <div class="progress-bar absolute top-0 left-0"></div>
-      <div class="mx-auto w-full md:w-9/12 h-full py-48 sm:py-60">
-        <div
-          class="status-wheel-frame font-light tracking-wide overflow-hidden"
-        >
-          <div class="status-wheel transition-all duration-500 flex flex-col">
-            <p class="status-item">加载中...</p>
+      <article class="w-full h-full flex flex-row">
+        <section class="w-full h-full flex flex-col justify-center">
+          <div class="w-full mx-auto flex flex-col gap-20 lg:ml-28">
+            <div
+              class="status-wheel-frame font-light tracking-wide overflow-hidden"
+            >
+              <div
+                class="status-wheel transition-all duration-500 flex flex-col"
+              >
+                <p class="status-item">正在获取文件信息</p>
+              </div>
+            </div>
+            <p
+              class="font-medium text-lg text-center lg:text-left text-gray-500 tracking-wider"
+            >
+              请使用现代浏览器
+            </p>
           </div>
-        </div>
-      </div>
+        </section>
+        <section class="hidden lg:block h-full w-1/2">Some article</section>
+      </article>
+
       <!-- Debug -->
-      <input type="text" class="bvid_input" />
-      <button class="submit" disabled>Submit</button>
+      <!-- <input type="text" class="bvid_input" />
+      <button class="submit" disabled>Submit</button> -->
     </main>
   </body>
 </html>
