@@ -31,11 +31,9 @@ const ffmpeg = createFFmpeg({
     nextMessage(bvid, "normal");
     await transcodeBiliVideo(ffmpeg, bvid, nextStatus, setProgress);
     await new Promise((resolve, reject) => setTimeout(resolve, 700));
-    nextMessage(
-      "喜欢吗？",
-      "link",
-      () => (location.href = "https://www.baidu.com")
-    );
+    nextMessage("喜欢吗？", "link", () => {
+      nextMessage("谢谢。开发者已经收到你的👍。", "normal");
+    });
   } catch (e) {
     const error = packageError("未知错误", UNKNOWN_ERROR_DETAILMSG, e, true);
     nextStatus(error.status);
