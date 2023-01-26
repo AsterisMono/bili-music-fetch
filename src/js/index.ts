@@ -23,6 +23,14 @@ const ffmpeg = createFFmpeg({
   try {
     await loadFFmpeg();
     const pathname = new URL(location.href).pathname;
+    if (pathname === "/") {
+      nextStatus("(`･∀･)");
+      nextMessage(
+        `你好呀！访问 ${location.href}video/BV号 来下载音乐`,
+        "normal"
+      );
+      return;
+    }
     const re = new RegExp("\\/video\\/BV\\w{10}/");
     const re2 = new RegExp("\\/video\\/BV\\w{10}");
     if (!(re.test(pathname) || re2.test(pathname)))
