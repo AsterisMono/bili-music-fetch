@@ -26,12 +26,17 @@ const ffmpeg = createFFmpeg({
     const re = new RegExp("\\/video\\/BV\\w{10}/");
     if (!re.test(pathname)) throw packageError("参数错误", "调用格式不正确");
     const bvid = pathname.split("/")[2];
-    nextMessage(bvid);
+    nextMessage(bvid, "normal");
     await transcodeBiliVideo(ffmpeg, bvid, nextStatus, setProgress);
+    nextMessage(
+      "喜欢吗？",
+      "link",
+      () => (location.href = "https://www.baidu.com")
+    );
   } catch (e) {
     const error = packageError("未知错误", UNKNOWN_ERROR_DETAILMSG, e, true);
     nextStatus(error.status);
-    nextMessage(error.detailMsg);
+    nextMessage(error.detailMsg, "error");
     console.error(error);
     setProgress(0);
   }

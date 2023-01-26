@@ -66,3 +66,15 @@ body {
     text-align: unset;
   }
 }
+
+.message-bar.message-normal,
+.message-bar.message-error {
+  @apply text-gray-500;
+}
+
+.message-bar.message-link {
+  @apply text-blue-500;
+  @apply underline;
+  @apply underline-offset-4;
+  @apply cursor-pointer;
+}

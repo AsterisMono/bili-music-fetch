@@ -100,6 +100,6 @@ export const transcodeBiliVideo = async function (
 
   // 5. finish up
   progressCb(1.0);
-  await statusCb("即将完成...");
+  await statusCb("已完成");
   offerFileAsDownload(ffmpeg, getFileName("out", "mp3"), `${videoTitle}.mp3`);
 };
