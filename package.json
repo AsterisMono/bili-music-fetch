@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "parcel src/index.html",
-    "build": "parcel build src/index.html && cp src/_headers dist/"
+    "build": "parcel build src/index.html",
+    "build-cf": "parcel build src/index.html --no-source-map && cp src/_headers dist/"
   },
   "dependencies": {},
   "devDependencies": {
