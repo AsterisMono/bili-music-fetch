@@ -24,10 +24,13 @@ const ffmpeg = createFFmpeg({
     await loadFFmpeg();
     const pathname = new URL(location.href).pathname;
     const re = new RegExp("\\/video\\/BV\\w{10}/");
-    if (!re.test(pathname)) throw packageError("参数错误", "调用格式不正确");
+    const re2 = new RegExp("\\/video\\/BV\\w{10}");
+    if (!(re.test(pathname) || re2.test(pathname)))
+      throw packageError("参数错误", "调用格式不正确");
     const bvid = pathname.split("/")[2];
     nextMessage(bvid, "normal");
     await transcodeBiliVideo(ffmpeg, bvid, nextStatus, setProgress);
+    await new Promise((resolve, reject) => setTimeout(resolve, 700));
     nextMessage(
       "喜欢吗？",
       "link",

@@ -1,6 +1,7 @@
 import type { FFmpeg } from "@ffmpeg/ffmpeg";
 import { fetchFile, offerFileAsDownload } from "./util";
 import { UNKNOWN_ERROR_DETAILMSG, packageError } from "./error";
+import { nextMessage } from "./messageBar";
 export const transcodeBiliVideo = async function (
   ffmpeg: FFmpeg,
   bvid: string,
@@ -24,6 +25,8 @@ export const transcodeBiliVideo = async function (
   } catch (e) {
     throw packageError("视频信息获取失败", "请检查BV号是否正确", e);
   }
+
+  nextMessage(`${videoTitle} - ${videoUploader}`, "normal");
 
   // stage: raw(mp4), converted(mp3), bundled(mp3)
   const getFileName = (stage: string, ext: string) =>
