@@ -17,9 +17,7 @@ export const transcodeBiliVideo = async function (
     videoUploader: string,
     videoUrl: string;
   try {
-    const infoResult = await fetch(
-      `https://bili-fetch.nanekino8629.workers.dev/video/${bvid}`
-    );
+    const infoResult = await fetch(`https://bili-fetch.amono.me/video/${bvid}`);
     ({ cid, coverImageUrl, videoTitle, videoUploader, videoUrl } =
       await infoResult.json());
   } catch (e) {
