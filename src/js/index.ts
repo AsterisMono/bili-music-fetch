@@ -17,7 +17,9 @@ const ffmpeg = createFFmpeg({
     try {
       await ffmpeg.load();
     } catch (e) {
-      throw packageError("加载失败", "FFmpeg 运行时加载失败", e, true);
+      if (e.message === "SharedArrayBuffer is not defined")
+        throw packageError("加载失败", "请使用Chrome浏览器打开", e, true);
+      else throw packageError("加载失败", "ffmpeg 运行时加载失败");
     }
   };
   try {
