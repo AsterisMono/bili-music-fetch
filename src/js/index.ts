@@ -2,8 +2,9 @@
 const { createFFmpeg } = FFmpeg;
 import type { FFmpeg } from "@ffmpeg/ffmpeg";
 import { nextStatus } from "./statusWheel";
-import { setProgress } from "./progressBar";
+import { setProgress, setProgressColor } from "./progressBar";
 import { transcodeBiliVideo } from "./transcodeBiliVideo";
+import { UNKNOWN_ERROR_DETAILMSG, isCustomError, packageError } from "./error";
 const bvidInput = document.querySelector(".bvid_input") as HTMLInputElement;
 const submitButton = document.querySelector(".submit") as HTMLButtonElement;
 
@@ -12,8 +13,14 @@ const ffmpeg = createFFmpeg({
   log: true,
 }) as FFmpeg;
 
-submitButton.addEventListener("click", () => {
-  transcodeBiliVideo(ffmpeg, bvidInput.value, nextStatus, setProgress);
+submitButton.addEventListener("click", async () => {
+  try {
+    await transcodeBiliVideo(ffmpeg, bvidInput.value, nextStatus, setProgress);
+  } catch (e) {
+    const error = packageError("未知错误", UNKNOWN_ERROR_DETAILMSG, e, true);
+    nextStatus(error.status);
+    setProgress(0);
+  }
 });
 
 (async () => {

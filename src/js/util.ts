@@ -1,4 +1,5 @@
 import type { FFmpeg } from "@ffmpeg/ffmpeg";
+import { UNKNOWN_ERROR_DETAILMSG, packageError } from "./error";
 
 export const fetchFile = async (
   URL: string,
@@ -8,8 +9,9 @@ export const fetchFile = async (
     const res = await fetch(URL, {
       referrer: "",
     });
-    if (!res.ok) throw makeError("下载失败", `${res.status} ${res.statusText}`);
-    if (!res.body) throw makeError("下载失败", "请使用现代浏览器");
+    if (!res.ok)
+      throw packageError("下载失败", `${res.status} ${res.statusText}`);
+    if (!res.body) throw packageError("下载失败", "请使用现代浏览器");
     const contentEncoding = res.headers.get("content-encoding");
     const contentLength = res.headers.get(
       contentEncoding ? "x-file-size" : "content-length"
@@ -45,7 +47,8 @@ export const fetchFile = async (
     const data = await progressedResponse.arrayBuffer();
     return new Uint8Array(data);
   } catch (e) {
-    throw makeError("下载失败", "出现了意料之外的错误", e);
+    if (e.isCustomError) throw e;
+    else throw packageError("下载失败", UNKNOWN_ERROR_DETAILMSG, e, true);
   }
 };
 
@@ -62,12 +65,4 @@ export function offerFileAsDownload(
   document.body.appendChild(downloadEl);
   downloadEl.click();
   document.body.removeChild(downloadEl);
-}
-
-export function makeError(
-  status: string,
-  detailMsg: string,
-  originalError?: Error
-) {
-  throw { status, detailMsg, originalError };
 }
